@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "910592114279",
+    "project_id": "cost-deko",
+    "storage_bucket": "cost-deko.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910592114279:android:1e245dc415000c77235ec2",
+        "android_client_info": {
+          "package_name": "com.justforlocks.costdeko.costdeko"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "910592114279-cqpic0b4h7pfgrl05ijk18m5nslsgor2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPlUxAVLs8skjp9YM8jOU2Oze4qHhXcvo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "910592114279-cqpic0b4h7pfgrl05ijk18m5nslsgor2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
