@@ -15,6 +15,7 @@ class _HomeFragmentState extends State<HomeFragment> {
   @override
   void initState() {
     GetCategories();
+    GetBrands();
     super.initState();
   }
 
