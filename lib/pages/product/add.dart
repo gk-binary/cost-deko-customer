@@ -55,13 +55,21 @@ class _AddProductState extends State<AddProduct> {
                 dropdownDecoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                 ),
-                items: store.categoryNames
-                    .map((item) => DropdownMenuItem<String>(
-                        value: item,
-                        child: item.text.capitalize
-                            .maxFontSize(14)
-                            .minFontSize(14)
-                            .make()))
+                items: store.categories
+                    .map((item) => item.isActive
+                        ? DropdownMenuItem<String>(
+                            value: item.name,
+                            child: item.name.text.capitalize
+                                .maxFontSize(14)
+                                .minFontSize(14)
+                                .make())
+                        : DropdownMenuItem<String>(
+                            value: item.name,
+                            enabled: false,
+                            child: item.name.text.capitalize.gray300
+                                .maxFontSize(14)
+                                .minFontSize(14)
+                                .make()))
                     .toList(),
                 validator: (value) {
                   if (value == null) {
@@ -71,6 +79,11 @@ class _AddProductState extends State<AddProduct> {
                 onChanged: (value) {
                   itemType = value as String;
                   store.addItemResult["category_name"] = value;
+                  int catIndex =
+                      store.categories.indexWhere((f) => f.name == value);
+                  store.addItemResult["category_id"] =
+                      store.categories[catIndex].id;
+
                   if (value == "washing machine") {
                     capacityUnit = "in Kg";
                     store.addItemResult["capacity_unit"] = "kg";

@@ -1,3 +1,4 @@
+import 'package:costdeko/data/features.dart';
 import 'package:costdeko/data/manufacturers.dart';
 import 'package:costdeko/management/store.dart';
 import 'package:costdeko/models/offers-model.dart';
@@ -57,5 +58,12 @@ class GetBrands extends VxMutation<AppStore> {
     //     store?.offers.add(OffersModel.fromMap(data));
     //   }
     // });
+  }
+}
+
+class GetFeatures extends VxMutation<AppStore> {
+  @override
+  perform() {
+    store!.features = features;
   }
 }

@@ -25,30 +25,33 @@ class ProductModel {
   final bool isFreeInstallationAvailable;
   final bool isAccessoriesAvailable;
   final bool isReseller;
+  final num energyStarRating;
 
-  ProductModel(
-      {required this.id,
-      required this.createdBy,
-      required this.categoryId,
-      required this.categoryName,
-      required this.features,
-      required this.description,
-      required this.modelYear,
-      required this.price,
-      required this.powerRating,
-      required this.capacity,
-      required this.capacityUnit,
-      required this.isBillAvailable,
-      required this.isEmiAvailable,
-      required this.isWarrantyAvailable,
-      required this.warrantyDetails,
-      required this.warrantyPeriodInMonths,
-      required this.isFreeServiceAvailable,
-      required this.freeServicePeriodInMonths,
-      required this.manufacturer,
-      required this.isHomeDeliveryAvailable,
-      required this.isHomeDeliveryFree,
-      required this.isFreeInstallationAvailable,
-      required this.isReseller,
-      required this.isAccessoriesAvailable});
+  ProductModel({
+    required this.id,
+    required this.createdBy,
+    required this.categoryId,
+    required this.categoryName,
+    required this.features,
+    required this.description,
+    required this.modelYear,
+    required this.price,
+    required this.powerRating,
+    required this.capacity,
+    required this.capacityUnit,
+    required this.isBillAvailable,
+    required this.isEmiAvailable,
+    required this.isWarrantyAvailable,
+    required this.warrantyDetails,
+    required this.warrantyPeriodInMonths,
+    required this.isFreeServiceAvailable,
+    required this.freeServicePeriodInMonths,
+    required this.manufacturer,
+    required this.isHomeDeliveryAvailable,
+    required this.isHomeDeliveryFree,
+    required this.isFreeInstallationAvailable,
+    required this.isReseller,
+    required this.isAccessoriesAvailable,
+    required this.energyStarRating,
+  });
 }
