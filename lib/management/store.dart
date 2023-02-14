@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:costdeko/models/brand-model.dart';
 import 'package:costdeko/models/category-model.dart';
+import 'package:costdeko/models/product_model.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../models/feature-model.dart';
@@ -15,4 +16,6 @@ class AppStore extends VxStore {
   List<BrandModel> brands = [];
   List<String> brandName = [];
   Map<String, dynamic> addItemResult = {};
+  String currentUser = "USER";
+  List<ProductModel> myProducts = [];
 }

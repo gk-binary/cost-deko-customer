@@ -23,6 +23,7 @@ dependencies:
   dropdown_button2: ^1.9.2
   flutter_spinbox: ^0.12.0
   multi_dropdown: ^1.0.8
+  animated_toggle_switch: ^0.6.1
 
 dev_dependencies:
   auto_route_generator: ^5.0.3

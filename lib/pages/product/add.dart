@@ -113,15 +113,11 @@ class _AddProductState extends State<AddProduct> {
               10.heightBox,
               DropdownButtonFormField2(
                 decoration: InputDecoration(
-                  //Add isDense true and zero Padding.
-                  //Add Horizontal padding using buttonPadding and Vertical padding by increasing buttonHeight instead of add Padding here so that The whole TextField Button become clickable, and also the dropdown menu open under The whole TextField Button.
                   isDense: true,
                   contentPadding: EdgeInsets.zero,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  //Add more decoration as you want here
-                  //Add label If you want but add hint outside the decoration to be aligned in the button perfectly.
                 ),
                 isExpanded: true,
                 hint: const Text(
@@ -186,9 +182,9 @@ class _AddProductState extends State<AddProduct> {
                 max: 2022,
                 step: 1,
                 value: 2020,
-                onChanged: (value) => store.addItemResult["modelYear"] = value,
+                onChanged: (value) => store.addItemResult["model_year"] = value,
                 onSubmitted: (value) =>
-                    store.addItemResult["modelYear"] = value,
+                    store.addItemResult["model_year"] = value,
                 textStyle: const TextStyle(fontSize: 32),
                 incrementIcon: const Icon(Icons.keyboard_arrow_up, size: 58),
                 decrementIcon: const Icon(Icons.keyboard_arrow_down, size: 58),
@@ -204,7 +200,8 @@ class _AddProductState extends State<AddProduct> {
                     borderRadius: BorderRadius.all(Radius.circular(10.0)),
                   ),
                 ),
-                onChanged: (value) => store.addItemResult["capacity"] = value,
+                onChanged: (value) =>
+                    store.addItemResult["capacity"] = int.parse(value),
                 validator: (String? value) =>
                     (value!.isEmpty) ? 'Required field' : null,
               ),
@@ -230,8 +227,8 @@ class _AddProductState extends State<AddProduct> {
                       if (isValid) {
                         formkey.currentState?.save();
 
-                        if (!store.addItemResult.containsKey("modelYear")) {
-                          store.addItemResult["modelYear"] = 2020;
+                        if (!store.addItemResult.containsKey("model_year")) {
+                          store.addItemResult["model_year"] = 2020;
                         }
                         if (!store.addItemResult.containsKey("price")) {
                           store.addItemResult["price"] = 1000;
