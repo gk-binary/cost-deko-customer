@@ -56,13 +56,19 @@ class _SellFragmentState extends State<SellFragment> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              "${item.categoryName}".text.capitalize.make(),
+              "${item.categoryName} (${item.capacity} ${item.capacityUnit})"
+                  .text
+                  .capitalize
+                  .make(),
               "${item.modelYear.toInt()} Model".text.capitalize.make(),
               "Added On: ${DateFormat('dd-MMM-yyyy').format(item.createdOn)}"
                   .text
                   .make()
             ],
           ),
+          onTap: () {
+            context.router.navigateNamed("/view-product/${item.id}");
+          },
         ),
       );
 }

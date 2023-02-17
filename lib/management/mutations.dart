@@ -95,7 +95,7 @@ class AddProduct extends VxMutation<AppStore> {
   AddProduct({required this.product});
   @override
   perform() {
-    ProductModel productModel = ProductModel.fromMap(product);
+    ProductModel productModel = ProductModel.fromMapToFirebase(product);
     store?.db
         .collection("products")
         .doc(productModel.id)

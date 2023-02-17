@@ -1,3 +1,4 @@
+import 'package:costdeko/pages/fragments/accountFragment.dart';
 import 'package:costdeko/pages/fragments/homeFragment.dart';
 import 'package:costdeko/pages/fragments/sellFragment.dart';
 import 'package:floating_navbar/floating_navbar.dart';
@@ -26,7 +27,7 @@ class MainScreen extends StatelessWidget {
             title: 'Sell'),
         FloatingNavBarItem(
             iconData: Icons.account_circle,
-            page: HomeFragment(),
+            page: const AccountFragment(),
             title: 'Account'),
       ],
       horizontalPadding: 40.0,

@@ -1,13 +1,18 @@
+import 'package:costdeko/data/offers-banner.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:velocity_x/velocity_x.dart';
+
+import '../models/offers-model.dart';
 
 class Offers extends StatelessWidget {
   const Offers({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    List<OffersModel> offersList = offersSlider;
+
     return VxSwiper.builder(
-      itemCount: 10,
+      itemCount: offersList.length,
       height: 200,
       aspectRatio: 16 / 9,
       viewportFraction: 0.8,
@@ -26,10 +31,8 @@ class Offers extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: Vx.red500,
-            image: const DecorationImage(
-                fit: BoxFit.fill,
-                image: NetworkImage(
-                    "https://navbharattimes.indiatimes.com/thumb/msid-94469688,imgsize-98348,width-540,height-405,resizemode-75/best-seller-washing-machine-94469688.jpg")),
+            image: DecorationImage(
+                fit: BoxFit.fill, image: NetworkImage(offersList[index].image)),
           ),
         );
       },

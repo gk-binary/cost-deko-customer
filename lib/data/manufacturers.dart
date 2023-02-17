@@ -1,16 +1,52 @@
 import 'package:costdeko/models/brand-model.dart';
 
 final List<BrandModel> brands = [
-  BrandModel(name: 'Samsung', imageUrl: ''),
-  BrandModel(name: 'LG', imageUrl: ''),
-  BrandModel(name: 'Bosh', imageUrl: ''),
-  BrandModel(name: 'Whirlpool', imageUrl: ''),
-  BrandModel(name: 'Panasonic', imageUrl: ''),
-  BrandModel(name: 'Croma', imageUrl: ''),
-  BrandModel(name: 'IFB', imageUrl: ''),
-  BrandModel(name: 'Haier', imageUrl: ''),
-  BrandModel(name: 'Godrej', imageUrl: ''),
-  BrandModel(name: 'Lloyd', imageUrl: ''),
-  BrandModel(name: 'Onida', imageUrl: ''),
-  BrandModel(name: 'AmazonBasics', imageUrl: ''),
+  BrandModel(
+      name: 'Samsung',
+      imageUrl:
+          'https://www.shutterstock.com/image-vector/circle-business-logo-company-name-260nw-626261534.jpg'),
+  BrandModel(
+      name: 'LG',
+      imageUrl:
+          'https://www.shutterstock.com/image-vector/circle-business-logo-company-name-260nw-626261534.jpg'),
+  BrandModel(
+      name: 'Bosh',
+      imageUrl:
+          'https://www.shutterstock.com/image-vector/circle-business-logo-company-name-260nw-626261534.jpg'),
+  BrandModel(
+      name: 'Whirlpool',
+      imageUrl:
+          'https://www.shutterstock.com/image-vector/circle-business-logo-company-name-260nw-626261534.jpg'),
+  BrandModel(
+      name: 'Panasonic',
+      imageUrl:
+          'https://www.shutterstock.com/image-vector/circle-business-logo-company-name-260nw-626261534.jpg'),
+  BrandModel(
+      name: 'Croma',
+      imageUrl:
+          'https://www.shutterstock.com/image-vector/circle-business-logo-company-name-260nw-626261534.jpg'),
+  BrandModel(
+      name: 'IFB',
+      imageUrl:
+          'https://www.shutterstock.com/image-vector/circle-business-logo-company-name-260nw-626261534.jpg'),
+  BrandModel(
+      name: 'Haier',
+      imageUrl:
+          'https://www.shutterstock.com/image-vector/circle-business-logo-company-name-260nw-626261534.jpg'),
+  BrandModel(
+      name: 'Godrej',
+      imageUrl:
+          'https://www.shutterstock.com/image-vector/circle-business-logo-company-name-260nw-626261534.jpg'),
+  BrandModel(
+      name: 'Lloyd',
+      imageUrl:
+          'https://www.shutterstock.com/image-vector/circle-business-logo-company-name-260nw-626261534.jpg'),
+  BrandModel(
+      name: 'Onida',
+      imageUrl:
+          'https://www.shutterstock.com/image-vector/circle-business-logo-company-name-260nw-626261534.jpg'),
+  BrandModel(
+      name: 'AmazonBasics',
+      imageUrl:
+          'https://www.shutterstock.com/image-vector/circle-business-logo-company-name-260nw-626261534.jpg'),
 ];

@@ -119,4 +119,38 @@ class ProductModel {
       energyStarRating: map['energy_star_rating'] as num,
     );
   }
+
+  factory ProductModel.fromMapToFirebase(Map<String, dynamic> map) {
+    return ProductModel(
+      id: map['id'] as String,
+      createdOn: map['created_on'],
+      updatedOn: map['updated_on'],
+      createdBy: map['created_by'] as String,
+      categoryId: map['category_id'] as String,
+      categoryName: map['category_name'] as String,
+      manufacturer: map['manufacturer'] as String,
+      features: (map['features'] as List<dynamic>)
+          .map((item) => item.toString())
+          .toList(),
+      description: map['description'] as String,
+      modelYear: map['model_year'] as num,
+      powerRating: map['power_rating'] as num,
+      capacity: map['capacity'] as num,
+      capacityUnit: map['capacity_unit'] as String,
+      price: map['price'] as num,
+      isBillAvailable: map['is_bill_available'] as bool,
+      isEmiAvailable: map['is_emi_available'] as bool,
+      isWarrantyAvailable: map['is_warranty_available'] as bool,
+      warrantyDetails: map['warranty_details'] as String,
+      warrantyPeriodInMonths: map['warranty_period_in_months'] as num,
+      isFreeServiceAvailable: map['is_free_service_available'] as bool,
+      freeServicePeriodInMonths: map['free_service_period_in_months'] as num,
+      isHomeDeliveryFree: map['is_home_delivery_free'] as bool,
+      isFreeInstallationAvailable:
+          map['is_free_installation_available'] as bool,
+      isAccessoriesAvailable: map['is_accessories_available'] as bool,
+      isReseller: map['is_reseller'] as bool,
+      energyStarRating: map['energy_star_rating'] as num,
+    );
+  }
 }
