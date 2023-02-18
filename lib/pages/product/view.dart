@@ -1,10 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:costdeko/management/store.dart';
+import 'package:costdeko/models/product_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
-
-import '../../models/product_model.dart';
 
 class ViewProduct extends StatefulWidget {
   final String productID;
@@ -17,14 +16,21 @@ class ViewProduct extends StatefulWidget {
 
 class _ViewProductState extends State<ViewProduct> {
   AppStore store = VxState.store as AppStore;
+  late ProductModel product;
 
   @override
   Widget build(BuildContext context) {
     int productIndex =
         store.myProducts.indexWhere((f) => f.id == widget.productID);
 
-    ProductModel product = store.myProducts[productIndex];
-    print(product.energyStarRating.toDouble());
+    if (productIndex == -1) {
+      int productIndex =
+          store.products.indexWhere((f) => f.id == widget.productID);
+      product = store.products[productIndex];
+    } else {
+      product = store.myProducts[productIndex];
+    }
+
     return Scaffold(
       appBar: AppBar(title: "Product Details".text.make()),
       body: Padding(
@@ -91,7 +97,7 @@ class _ViewProductState extends State<ViewProduct> {
           10.heightBox,
           "Description".text.lg.bold.make(),
           5.heightBox,
-          product.description.text.justify.make(),
+          "${product.description}".text.justify.make(),
           10.heightBox,
           "Features".text.lg.bold.make(),
           Wrap(

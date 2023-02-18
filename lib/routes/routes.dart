@@ -3,6 +3,7 @@ import 'package:costdeko/pages/product/add-2.dart';
 import 'package:costdeko/pages/product/add.dart';
 
 import '../mainscreen.dart';
+import '../pages/product/list-product.dart';
 import '../pages/product/view.dart';
 
 @MaterialAutoRouter(
@@ -20,7 +21,12 @@ import '../pages/product/view.dart';
         page: ViewProduct,
         transitionsBuilder: TransitionsBuilders.slideLeft,
         durationInMilliseconds: 400,
-        path: "/view-product/:id")
+        path: "/view-product/:id"),
+    CustomRoute(
+        page: ListProduct,
+        transitionsBuilder: TransitionsBuilders.slideLeft,
+        durationInMilliseconds: 400,
+        path: "/list-product")
   ],
 )
 class $AppRouter {}

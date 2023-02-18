@@ -1,5 +1,6 @@
-import 'package:costdeko/data/manufacturers.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:costdeko/management/mutations.dart';
+import 'package:costdeko/management/store.dart';
 import 'package:costdeko/widgets/category-horizontal.dart';
 import 'package:costdeko/widgets/offers.dart';
 import 'package:flutter/material.dart';
@@ -13,15 +14,19 @@ class HomeFragment extends StatefulWidget {
 }
 
 class _HomeFragmentState extends State<HomeFragment> {
+  AppStore store = VxState.store as AppStore;
   @override
   void initState() {
     GetCategories();
     GetBrands();
+    GetProducts();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    VxState.watch(context, on: [GetProducts, GetBrands, GetCategories]);
+
     return Scaffold(
       appBar: AppBar(
         title: "Bengaluru".text.make(),
@@ -49,7 +54,7 @@ class _HomeFragmentState extends State<HomeFragment> {
               crossAxisCount: 3,
               mainAxisSpacing: 10.0,
               crossAxisSpacing: 10.0,
-              children: brands.map((brand) {
+              children: store.availableBrandsModel.map((brand) {
                 return Card(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -63,7 +68,7 @@ class _HomeFragmentState extends State<HomeFragment> {
                       Text(brand.name),
                     ],
                   ),
-                );
+                ).onTap(() => context.router.navigateNamed("/list-product"));
               }).toList(),
             ),
             100.heightBox

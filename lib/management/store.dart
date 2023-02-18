@@ -14,8 +14,12 @@ class AppStore extends VxStore {
   List<String> categoryNames = [];
   List<OffersModel> offers = [];
   List<BrandModel> brands = [];
+  List<BrandModel> availableBrandsModel = [];
+  List<String> availableBrands = [];
   List<String> brandName = [];
   Map<String, dynamic> addItemResult = {};
   String currentUser = "USER";
   List<ProductModel> myProducts = [];
+  List<ProductModel> products = [];
+  Map<String, List<ProductModel>> productsWithCategories = {};
 }
