@@ -26,7 +26,7 @@ import '../pages/product/view.dart';
         page: ListProduct,
         transitionsBuilder: TransitionsBuilders.slideLeft,
         durationInMilliseconds: 400,
-        path: "/list-product")
+        path: "/list-product/:name")
   ],
 )
 class $AppRouter {}

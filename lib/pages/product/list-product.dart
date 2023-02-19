@@ -7,7 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class ListProduct extends StatefulWidget {
-  const ListProduct({Key? key}) : super(key: key);
+  final String categoryId;
+  const ListProduct({Key? key, @PathParam('name') required this.categoryId})
+      : super(key: key);
 
   @override
   State<ListProduct> createState() => _ListProductState();
@@ -18,15 +20,28 @@ class _ListProductState extends State<ListProduct> {
   @override
   void initState() {
     GetProducts();
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    int categoryIndex = 0;
     VxState.watch(context, on: [GetProducts]);
     List<String> filterHeader = store.categoryNames;
+    if (widget.categoryId != "null") {
+      categoryIndex =
+          store.categories.indexWhere((f) => f.id == widget.categoryId);
+      if (categoryIndex == -1) {
+        categoryIndex = 0;
+      }
+    } else {
+      categoryIndex = 0;
+    }
+    print(categoryIndex);
     return DefaultTabController(
       length: filterHeader.length,
+      initialIndex: categoryIndex,
       child: Scaffold(
           appBar: AppBar(
             title: "Products".text.make(),
@@ -61,7 +76,7 @@ class _ListProductState extends State<ListProduct> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
+        SizedBox(
           height: 100,
           width: 100,
           child: Image.network(
@@ -103,7 +118,7 @@ class _ListProductState extends State<ListProduct> {
                 },
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Colors.black,
                 ),
                 child: SizedBox(
                   width: double.infinity,
@@ -124,7 +139,6 @@ class _ListProductState extends State<ListProduct> {
         ),
       ],
     ).p4().card.make().onTap(() {
-      print(product.id);
       context.router.navigateNamed("/view-product/${product.id}");
     });
   }

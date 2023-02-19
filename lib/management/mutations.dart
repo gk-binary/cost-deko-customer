@@ -50,6 +50,7 @@ class GetProducts extends VxMutation<AppStore> {
   @override
   perform() async {
     store!.availableBrands = [];
+    store?.products = [];
     await store?.db
         .collection("products")
         .orderBy("created_on", descending: false)

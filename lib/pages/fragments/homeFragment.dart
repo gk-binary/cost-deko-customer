@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:costdeko/management/mutations.dart';
 import 'package:costdeko/management/store.dart';
+import 'package:costdeko/widgets/all-products-grid.dart';
 import 'package:costdeko/widgets/category-horizontal.dart';
 import 'package:costdeko/widgets/offers.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,11 @@ class _HomeFragmentState extends State<HomeFragment> {
         margin: const EdgeInsets.only(left: 5, right: 5),
         child: ListView(
           children: [
-            const HorizontalCategory(),
+            HorizontalCategory(
+              onTap: (item) => (item.isActive)
+                  ? context.router.navigateNamed("/list-product/${item.id}")
+                  : context.showToast(msg: "No ${item.name} found"),
+            ),
             "Offer Zone".text.xl.bold.make(),
             10.heightBox,
             const Offers(),
@@ -68,10 +73,20 @@ class _HomeFragmentState extends State<HomeFragment> {
                       Text(brand.name),
                     ],
                   ),
-                ).onTap(() => context.router.navigateNamed("/list-product"));
+                ).onTap(
+                    () => context.router.navigateNamed("/list-product/null"));
               }).toList(),
             ),
-            100.heightBox
+            10.heightBox,
+            "All Items".text.xl.bold.make(),
+            10.heightBox,
+            SizedBox(
+                height: 600,
+                child: ProductGridView(
+                  onTap: (product) => context.router
+                      .navigateNamed("/view-product/${product.id}"),
+                )),
+            100.heightBox,
           ],
         ),
       ),
