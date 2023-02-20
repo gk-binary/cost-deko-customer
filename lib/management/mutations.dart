@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:costdeko/data/features.dart';
 import 'package:costdeko/data/manufacturers.dart';
 import 'package:costdeko/management/store.dart';
 import 'package:costdeko/models/offers-model.dart';
 import 'package:costdeko/models/product_model.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../models/category-model.dart';
@@ -119,14 +123,45 @@ class GetFeatures extends VxMutation<AppStore> {
 
 class AddProduct extends VxMutation<AppStore> {
   final Map<String, dynamic> product;
+  final BuildContext context;
 
-  AddProduct({required this.product});
+  AddProduct({
+    required this.product,
+    required this.context,
+  });
   @override
-  perform() {
-    ProductModel productModel = ProductModel.fromMapToFirebase(product);
-    store?.db
-        .collection("products")
-        .doc(productModel.id)
-        .set(productModel.toMap());
+  perform() async {
+    List<String> imagesList = [];
+    store!.addProductLoading = "LOADING";
+    for (File image in store!.addItemResult["images"]) {
+      try {
+        Reference ref = store!.fbStorage.ref().child(
+            'product-images/${store!.currentUser}/${product["id"]}/${DateTime.now().toString()}');
+        UploadTask uploadTask = ref.putFile(image);
+
+        await uploadTask.whenComplete(() async {
+          String downloadUrl = await ref.getDownloadURL();
+          imagesList.add(downloadUrl);
+          product["images"] = imagesList;
+          ProductModel productModel = ProductModel.fromMapToFirebase(product);
+          store?.db
+              .collection("products")
+              .doc(productModel.id)
+              .set(productModel.toMap());
+          store?.myProducts.add(productModel);
+          store!.addProductLoading = "UPLOADED";
+          context.pop();
+          context.pop();
+          context.pop();
+        });
+      } catch (e) {
+        store!.addProductLoading = "ERROR";
+      }
+    }
+    // ProductModel productModel = ProductModel.fromMapToFirebase(product);
+    // store?.db
+    //     .collection("products")
+    //     .doc(productModel.id)
+    //     .set(productModel.toMap());
   }
 }

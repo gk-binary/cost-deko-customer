@@ -64,11 +64,18 @@ class ProductGridItem extends StatelessWidget {
                 topLeft: Radius.circular(8.0),
                 topRight: Radius.circular(8.0),
               ),
-              child: Image.network(
-                "https://www.lg.com/in/images/washing-machines/md07540887/gallery/FHM1408BDL-Washing-Machines-Front-View-MZ-01-v1.jpg",
-                fit: BoxFit.contain,
-                width: double.infinity,
-              ),
+              child: Center(
+                child: product.images.isEmpty
+                    ? (product.categoryName == "Fridge")
+                        ? Image.asset("assets/fridge.png", fit: BoxFit.contain)
+                        : Image.asset("assets/washingmachine.png",
+                            fit: BoxFit.contain)
+                    : Image.network(
+                        product.images[0],
+                        fit: BoxFit.contain,
+                        width: double.infinity,
+                      ),
+              ).p2(),
             ),
           ),
           Padding(

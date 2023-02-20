@@ -80,13 +80,11 @@ class _HomeFragmentState extends State<HomeFragment> {
             10.heightBox,
             "All Items".text.xl.bold.make(),
             10.heightBox,
-            SizedBox(
-                height: 600,
-                child: ProductGridView(
-                  onTap: (product) => context.router
-                      .navigateNamed("/view-product/${product.id}"),
-                )),
-            100.heightBox,
+            ProductGridView(
+              onTap: (product) =>
+                  context.router.navigateNamed("/view-product/${product.id}"),
+            ),
+            10.heightBox,
           ],
         ),
       ),

@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:costdeko/management/mutations.dart';
 import 'package:costdeko/management/store.dart';
 import 'package:costdeko/models/feature-model.dart';
@@ -279,7 +280,7 @@ class _AddProductState extends State<AddProduct2> {
                         store.addItemResult["created_by"] = store.currentUser;
 
                         print(store.addItemResult);
-                        AddProduct(product: store.addItemResult);
+                        context.router.navigateNamed("/add-product-3");
                       }
                     },
                     child: "Next".text.xl.bold.make(),

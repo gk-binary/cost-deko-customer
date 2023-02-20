@@ -3,6 +3,7 @@ class ProductModel {
   DateTime createdOn;
   DateTime updatedOn;
   final String createdBy;
+  final List<String> images;
   final String categoryId;
   final String categoryName;
   final String manufacturer;
@@ -32,6 +33,7 @@ class ProductModel {
     required this.updatedOn,
     required this.createdBy,
     required this.categoryId,
+    required this.images,
     required this.categoryName,
     required this.features,
     required this.description,
@@ -62,6 +64,7 @@ class ProductModel {
       'updated_on': updatedOn,
       'created_by': createdBy,
       'category_id': categoryId,
+      'images': images,
       'category_name': categoryName,
       'manufacturer': manufacturer,
       'features': features,
@@ -95,6 +98,10 @@ class ProductModel {
       categoryId: map['category_id'] as String,
       categoryName: map['category_name'] as String,
       manufacturer: map['manufacturer'] as String,
+      images: (map['images'] as List<dynamic>?)
+              ?.map((item) => item as String)
+              .toList() ??
+          [],
       features: (map['features'] as List<dynamic>)
           .map((item) => item.toString())
           .toList(),
@@ -127,6 +134,10 @@ class ProductModel {
       updatedOn: map['updated_on'],
       createdBy: map['created_by'] as String,
       categoryId: map['category_id'] as String,
+      images: (map['images'] as List<dynamic>?)
+              ?.map((item) => item as String)
+              .toList() ??
+          [],
       categoryName: map['category_name'] as String,
       manufacturer: map['manufacturer'] as String,
       features: (map['features'] as List<dynamic>)

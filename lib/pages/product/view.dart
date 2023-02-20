@@ -37,18 +37,16 @@ class _ViewProductState extends State<ViewProduct> {
         padding: const EdgeInsets.all(8.0),
         child: ListView(children: [
           VxSwiper.builder(
-            itemCount: 10,
+            itemCount: (product.images.isEmpty) ? 1 : product.images.length,
             height: 400,
             viewportFraction: 1.0,
             itemBuilder: (context, index) {
-              return "Item $index"
-                  .text
-                  .white
-                  .make()
-                  .box
-                  .alignCenter
-                  .color(Vx.randomOpaqueColor)
-                  .make();
+              return (product.images.isEmpty)
+                  ? (product.categoryName == "Fridge")
+                      ? Image.asset("assets/fridge.png", fit: BoxFit.contain)
+                      : Image.asset("assets/washingmachine.png",
+                          fit: BoxFit.contain)
+                  : Image.network(product.images[index]);
             },
           ),
           10.heightBox,

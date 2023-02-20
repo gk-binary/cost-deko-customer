@@ -22,6 +22,7 @@ class _AddProductState extends State<AddProduct> {
 
   @override
   Widget build(BuildContext context) {
+    store.addItemResult = {};
     return Scaffold(
       appBar: AppBar(
         title: "Add Item".text.make(),

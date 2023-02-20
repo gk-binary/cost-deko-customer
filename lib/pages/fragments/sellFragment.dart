@@ -50,8 +50,12 @@ class _SellFragmentState extends State<SellFragment> {
   Widget _listItem(item) => Container(
         margin: const EdgeInsets.all(10),
         child: ListTile(
-          leading: Image.network(
-              "https://cdn1.smartprix.com/rx-i6gTE5YIQ-w1200-h1200/6gTE5YIQ.jpg"),
+          leading: (item.images.isEmpty)
+              ? (item.categoryName == "Fridge")
+                  ? Image.asset("assets/fridge.png", fit: BoxFit.contain)
+                  : Image.asset("assets/washingmachine.png",
+                      fit: BoxFit.contain)
+              : Image.network(item.images[0]),
           title: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,6 +73,6 @@ class _SellFragmentState extends State<SellFragment> {
           onTap: () {
             context.router.navigateNamed("/view-product/${item.id}");
           },
-        ),
+        ).p4().card.make(),
       );
 }

@@ -27,7 +27,7 @@ class _ListProductState extends State<ListProduct> {
   @override
   Widget build(BuildContext context) {
     int categoryIndex = 0;
-    VxState.watch(context, on: [GetProducts]);
+    VxState.watch(context, on: [GetProducts, AddProduct]);
     List<String> filterHeader = store.categoryNames;
     if (widget.categoryId != "null") {
       categoryIndex =
@@ -79,8 +79,12 @@ class _ListProductState extends State<ListProduct> {
         SizedBox(
           height: 100,
           width: 100,
-          child: Image.network(
-              "https://www.lg.com/in/images/washing-machines/md07540887/gallery/FHM1408BDL-Washing-Machines-Front-View-MZ-01-v1.jpg"),
+          child: (product.images.isEmpty)
+              ? (product.categoryName == "Fridge")
+                  ? Image.asset("assets/fridge.png", fit: BoxFit.contain)
+                  : Image.asset("assets/washingmachine.png",
+                      fit: BoxFit.contain)
+              : Image.network(product.images[0]),
         ),
         10.widthBox,
         Expanded(
